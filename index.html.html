@@ -1,0 +1,249 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.wrap { padding: 1.5rem 1rem 2rem; max-width: 680px; }
+.school-header { text-align: center; margin-bottom: 1.5rem; }
+.school-header h1 { font-size: 17px; font-weight: 500; color: var(--text-primary); }
+.school-header p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+.section-title { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .05em; margin: 1.5rem 0 .75rem; border-bottom: 0.5px solid var(--border); padding-bottom: 6px; }
+
+/* Course cards */
+.course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.course-card { background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: .875rem 1rem; }
+.course-card .tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; }
+.course-card h3 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+.course-card .sub { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+.course-card .quota { font-size: 12px; font-weight: 500; margin-top: 6px; }
+.course-card .req { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+.tag-intl { background: var(--bg-accent); color: var(--text-accent); }
+.tag-ai { background: var(--bg-success); color: var(--text-success); }
+.quota-intl { color: var(--text-accent); }
+.quota-ai { color: var(--text-success); }
+
+/* Score table */
+.score-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.score-table th { background: var(--surface-1); color: var(--text-secondary); font-weight: 500; padding: 7px 10px; text-align: center; border: 0.5px solid var(--border); }
+.score-table td { padding: 7px 10px; text-align: center; border: 0.5px solid var(--border); color: var(--text-primary); }
+.score-table .row-name { text-align: left; font-weight: 500; color: var(--text-secondary); }
+.score-table .val { font-weight: 500; color: var(--text-accent); }
+.score-table .val-g { font-weight: 500; color: var(--text-success); }
+.score-table .na { color: var(--text-muted); }
+
+/* Steps */
+.steps { display: flex; gap: 8px; align-items: flex-start; }
+.step { flex: 1; }
+.step-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; margin: 0 auto 6px; }
+.step-num-1 { background: var(--bg-accent); color: var(--text-accent); }
+.step-num-2 { background: var(--bg-warning); color: var(--text-warning); }
+.step-num-3 { background: var(--bg-success); color: var(--text-success); }
+.step-body { background: var(--surface-1); border: 0.5px solid var(--border); border-radius: 10px; padding: .75rem; }
+.step-body h4 { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 5px; text-align: center; }
+.step-body p { font-size: 11.5px; color: var(--text-secondary); line-height: 1.6; text-align: center; }
+.step-arrow { color: var(--text-muted); font-size: 18px; padding-top: 20px; flex-shrink: 0; }
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-row { display: flex; gap: 12px; align-items: stretch; }
+.tl-dot-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 18px; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 14px; }
+.tl-line { flex: 1; width: 1px; background: var(--border-strong); }
+.tl-last .tl-line { display: none; }
+.tl-content { padding: 10px 0 14px; flex: 1; }
+.tl-date { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+.tl-event { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-top: 2px; }
+.tl-note { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
+.dot-blue { background: var(--text-accent); }
+.dot-amber { background: #BA7517; }
+.dot-green { background: var(--text-success); }
+.dot-red { background: #A32D2D; }
+
+/* Notes */
+.note-list { display: flex; flex-direction: column; gap: 6px; }
+.note-item { background: var(--surface-1); border-left: 3px solid var(--border-accent); border-radius: 0 8px 8px 0; padding: 8px 12px; font-size: 12.5px; color: var(--text-primary); line-height: 1.6; }
+.note-item strong { color: var(--text-accent); font-weight: 500; }
+
+.divider-note { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 1rem; }
+</style>
+
+<div class="wrap">
+  <div class="school-header">
+    <h1>臺北市立中正高中 115學年度<br>國際及特色課程甄選懶人包</h1>
+    <p>115年5月30日公告 · 限本校高一新生（普通班）或現有在校生</p>
+  </div>
+
+  <!-- 課程總覽 -->
+  <div class="section-title">課程總覽</div>
+  <div class="course-grid">
+    <div class="course-card">
+      <span class="tag tag-intl">國際雙語類</span>
+      <h3>雙語實驗班</h3>
+      <div class="sub">部分英語、雙語授課<br>自然班群 B、D 班</div>
+      <div class="quota quota-intl">▸ 錄取 34 人</div>
+      <div class="req">需：英文會考 A 以上</div>
+    </div>
+    <div class="course-card">
+      <span class="tag tag-intl">國際雙語類</span>
+      <h3>臺美雙聯 JDP</h3>
+      <div class="sub">與美國 Fairmont 學校<br>雙學位、全英語課程</div>
+      <div class="quota quota-intl">▸ 錄取 25 人</div>
+      <div class="req">無額外成績限制</div>
+    </div>
+    <div class="course-card">
+      <span class="tag tag-intl">國際雙語類</span>
+      <h3>臺英 IFY 預科</h3>
+      <div class="sub">英國 NCUK 大學預科<br>商業／科學／工程模組</div>
+      <div class="quota quota-intl">▸ 錄取 12 人</div>
+      <div class="req">需通過英語門檻考試</div>
+    </div>
+    <div class="course-card">
+      <span class="tag tag-intl">國際雙語類</span>
+      <h3>舞蹈國際課程</h3>
+      <div class="sub">美國 MCI 芭蕾合作<br>限舞蹈班學生</div>
+      <div class="quota quota-intl">▸ 錄取 10 人</div>
+      <div class="req">限本校舞蹈班高一、高二</div>
+    </div>
+    <div class="course-card" style="grid-column: span 2;">
+      <span class="tag tag-ai">AI 課程類</span>
+      <h3>AI 人工智慧課程</h3>
+      <div class="sub">與臺北科大、淡江大學、西門子合作 · 培養運算思維與設計思考 · 高二分流科學工程 or 商業分析組</div>
+      <div class="quota quota-ai">▸ 錄取 34 人</div>
+      <div class="req">需：數學或自然會考 A 以上 · 雙 A++ 可免筆試</div>
+    </div>
+  </div>
+
+  <!-- 甄選配分 -->
+  <div class="section-title">甄選配分比例</div>
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th class="row-name">項目</th>
+        <th>雙語</th>
+        <th>JDP</th>
+        <th>IFY</th>
+        <th>舞蹈</th>
+        <th>AI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-name">英文測驗</td>
+        <td class="val">25%</td>
+        <td class="val">30%</td>
+        <td class="val">40%</td>
+        <td class="val">20%</td>
+        <td class="na">—</td>
+      </tr>
+      <tr>
+        <td class="row-name">數學測驗</td>
+        <td class="val">25%</td>
+        <td class="val">25%</td>
+        <td class="na">—</td>
+        <td class="na">—</td>
+        <td class="val-g">70%</td>
+      </tr>
+      <tr>
+        <td class="row-name">書審資料</td>
+        <td class="val">10%</td>
+        <td class="val">10%</td>
+        <td class="val">10%</td>
+        <td class="val">50%</td>
+        <td class="val-g">30%</td>
+      </tr>
+      <tr>
+        <td class="row-name">全英文面試</td>
+        <td class="val">40%</td>
+        <td class="val">35%</td>
+        <td class="val">50%</td>
+        <td class="val">30%</td>
+        <td class="na">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 報名三步驟 -->
+  <div class="section-title">報名三步驟（三步驟全完成才算報名！）</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num step-num-1">1</div>
+      <div class="step-body">
+        <h4>線上填寫</h4>
+        <p>報名前先上 Google 表單填基本資料，並上傳書審資料 PDF</p>
+      </div>
+    </div>
+    <div class="step-arrow">›</div>
+    <div class="step">
+      <div class="step-num step-num-2">2</div>
+      <div class="step-body">
+        <h4>現場繳件</h4>
+        <p>攜帶報名表、准考證（貼2吋照）及相關成績正本到誠正樓史地教室</p>
+      </div>
+    </div>
+    <div class="step-arrow">›</div>
+    <div class="step">
+      <div class="step-num step-num-3">3</div>
+      <div class="step-body">
+        <h4>繳費完成</h4>
+        <p>每課程 $100 元，完成後核發蓋章准考證與收據</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 重要時程 -->
+  <div class="section-title">重要時程</div>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-dot-col"><div class="tl-dot dot-blue"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">7/9（四）13:00–16:00<br>7/10（五）09:00–16:00<br>7/13（一）09:00–12:00</div>
+        <div class="tl-event">現場報名（3 天擇一）</div>
+        <div class="tl-note">先完成 STEP 1 線上填寫再來現場</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-dot-col"><div class="tl-dot dot-amber"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">7/15（三）18:00 前</div>
+        <div class="tl-event">考場公告</div>
+        <div class="tl-note">筆試及面試試場公告於學校網站</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-dot-col"><div class="tl-dot dot-amber"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">7/16（四）</div>
+        <div class="tl-event">筆試 + 面試日</div>
+        <div class="tl-note">07:40 報到 → 08:10 英文 → 09:20 數學／IFY Password → 10:30 IFY 面試 → 13:10 雙語、JDP 面試</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-dot-col"><div class="tl-dot dot-green"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">7/20（一）11:00 前</div>
+        <div class="tl-event">甄選結果公告</div>
+        <div class="tl-note">11:00–12:00 成績複查 · 13:00–15:00 備取遞補聯繫</div>
+      </div>
+    </div>
+    <div class="tl-row tl-last">
+      <div class="tl-dot-col"><div class="tl-dot dot-green"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-date">7/21–7/24</div>
+        <div class="tl-event">正式錄取公告 + 線上報到 + 家長說明會</div>
+        <div class="tl-note">7/24（五）10:00 JDP、IFY 錄取生及家長說明會（務必出席）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="section-title">重要注意事項</div>
+  <div class="note-list">
+    <div class="note-item"><strong>二擇一：</strong>國際雙語類 和 AI 課程類 只能選一類報名</div>
+    <div class="note-item"><strong>國際類可多報：</strong>雙語、JDP、IFY 三者可同時報名，但最終只錄取一種（需填志願序）</div>
+    <div class="note-item"><strong>報名費：</strong>每課程 $100 元，低收入戶或失業給付家庭可免費</div>
+    <div class="note-item"><strong>考試當天：</strong>攜帶 2B 鉛筆、橡皮擦、藍/黑色原子筆及修正帶，遲到 15 分鐘不得入場</div>
+    <div class="note-item"><strong>書審資料：</strong>PDF 格式上傳，檔案命名「姓名_課程縮寫_書審資料」（例：王小明_JDP_書審資料）</div>
+  </div>
+  <div class="divider-note">詳細資訊以學校官網公告為準 · http://www.ccsh.tp.edu.tw/</div>
+</div>
